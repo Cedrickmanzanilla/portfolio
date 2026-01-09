@@ -79,9 +79,9 @@ const Hero = () => {
               <div className="absolute inset-0 bg-navy opacity-10 rounded-full blur-3xl transform scale-110"></div>
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-navy shadow-2xl">
                 <img
-                  src="/ced-pic-portfolio.png"
+                  src="/portfolio/ced-pic-portfolio.png"
                   alt="Cedrick Manzanilla - Video Editor & Web Developer"
-                  className="w-105 h-125 object-cover object-center"
+                  className="w-100 h-125 object-cover object-center"
                 />
               </div>
             </div>
