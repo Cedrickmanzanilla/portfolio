@@ -1,4 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
+import pythonIcon from '../assets/Pngs/Python.png';
+import dartIcon from '../assets/Pngs/Dart.webp';
+import javaIcon from '../assets/Pngs/Java.png';
+import phpIcon from '../assets/Pngs/Php.png';
+import sqlIcon from '../assets/Pngs/Sql.png';
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,12 +34,12 @@ const Skills = () => {
   ];
 
   const programmingLanguages = [
-    { name: 'C#', icon: '🔷' },
-    { name: 'Python', icon: '🐍' },
-    { name: 'Dart', icon: '🎯' },
-    { name: 'Java', icon: '☕' },
-    { name: 'PHP', icon: '🐘' },
-    { name: 'SQL', icon: '🗄️' }
+    { name: 'C#', icon: '/portfolio/csharp-icon.jpg' }, // Using public folder due to special character in filename
+    { name: 'Python', icon: pythonIcon },
+    { name: 'Dart', icon: dartIcon },
+    { name: 'Java', icon: javaIcon },
+    { name: 'PHP', icon: phpIcon },
+    { name: 'SQL', icon: sqlIcon }
   ];
 
   const otherSkills = [
@@ -251,7 +256,13 @@ const Skills = () => {
                 key={index}
                 className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center hover:bg-white/20 transform hover:scale-105 transition-all duration-300 border-2 border-white/20"
               >
-                <div className="text-4xl mb-2">{lang.icon}</div>
+                <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                  <img 
+                    src={lang.icon} 
+                    alt={lang.name}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
                 <h4 className="text-lg font-bold text-white">{lang.name}</h4>
               </div>
             ))}

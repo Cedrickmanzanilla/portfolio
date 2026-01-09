@@ -1,7 +1,33 @@
+import { useState, useEffect, useRef } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Services = () => {
   const { isDark } = useTheme();
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
   
   const services = [
     {
@@ -28,10 +54,11 @@ const Services = () => {
 
   return (
     <section
+      ref={sectionRef}
       id="services"
       className={`py-24 px-6 md:px-8 lg:px-12 transition-colors duration-300 ${
         isDark ? 'bg-gray-800' : 'bg-white'
-      }`}
+      } ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
     >
       <div className="w-full max-w-7xl mx-auto">
         <h2 className={`text-4xl md:text-5xl font-bold text-center mb-16 transition-colors duration-300 ${

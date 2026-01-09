@@ -11,7 +11,9 @@ const VideoEditingPortfolio = ({ onBack }) => {
     { id: 'ads', name: 'Ads' },
     { id: 'ugc', name: 'UGC' },
     { id: 'vsl', name: 'VSL' },
-    { id: 'faceless', name: 'Faceless' }
+    { id: 'faceless', name: 'Faceless' },
+    { id: 'shorts', name: 'Shorts' },
+    { id: 'vlogs', name: 'Longform' }
   ];
 
   // Helper function to get embed URL from view URL
@@ -229,7 +231,170 @@ const VideoEditingPortfolio = ({ onBack }) => {
     }
   ];
 
-  const allVideos = [...adsVideos, ...ugcVideos, ...vslVideos, ...facelessVideos].map(video => ({
+  // Shorts videos from Google Drive
+  const shortsVideos = [
+    {
+      name: 'Shorts 1',
+      category: 'shorts',
+      url: 'https://drive.google.com/file/d/1LFhF7CaA8DGYp_jdO3PVp2eK6JkP2xsh/view?usp=drive_link'
+    },
+    {
+      name: 'Shorts 2',
+      category: 'shorts',
+      url: 'https://drive.google.com/file/d/1Mh_6vVGLgD13MX4sjo9jgQBvzEZbyeTP/view?usp=drive_link'
+    },
+    {
+      name: 'Shorts 3',
+      category: 'shorts',
+      url: 'https://drive.google.com/file/d/1xyo2wUxeS5m5x0zgNFg9ujjuTcTo-FEV/view?usp=drive_link'
+    },
+    {
+      name: 'Shorts 4',
+      category: 'shorts',
+      url: 'https://drive.google.com/file/d/1WdhqUljV1sOXltgfNRIangTu6V4oEphw/view?usp=drive_link'
+    },
+    {
+      name: 'Shorts 5',
+      category: 'shorts',
+      url: 'https://drive.google.com/file/d/11ShZYnIRJFZf28gErSNbJqFqX1i_Dx0R/view?usp=drive_link'
+    },
+    {
+      name: 'Shorts 6',
+      category: 'shorts',
+      url: 'https://drive.google.com/file/d/1qvOORTQyxfJauT-0wo8PntxWHsG80HTz/view?usp=drive_link'
+    },
+    {
+      name: 'Shorts 7',
+      category: 'shorts',
+      url: 'https://drive.google.com/file/d/1hHPl2eMqQgg3Zo45Cww_dAjMvUsz30l3/view?usp=drive_link'
+    },
+    {
+      name: 'Shorts 8',
+      category: 'shorts',
+      url: 'https://drive.google.com/file/d/1p0nbYefxUUIczZj_zScl5AHAMlvLYf4M/view?usp=drive_link'
+    }
+  ];
+
+  // Longform videos from Google Drive (original 7 + Shorts 9-17 moved here)
+  const vlogsVideos = [
+    {
+      name: 'Longform 1',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1Fvlr7EQSZse0q5e0Rm-p4VfyhMkzJZpe/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 2',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/13aDbjZDq44RmKhzmz5-vRgEZVqSmQp2G/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 3',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1dDvIx6FhX42ZspQ7wLIbDahxiDZCUxim/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 4',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1y0kKyEAlArFw-fa_b-4scPaJwKaj3Nyg/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 5',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1DHuCFoXyUPvvhCSRZYsGqDlKq43SyZ8t/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 6',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1xOYOSY9OtZHl8HWuK8tLcIJvPfN_Qg9z/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 7',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1vKJCr6DeLWqPwmzuHGWMpcp1CA7uTcVk/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 8',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1Mpqqf9yql7jsIkaBa-KpbC_D-zkujcNH/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 9',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1Fvlr7EQSZse0q5e0Rm-p4VfyhMkzJZpe/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 10',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1zkftuwUmgbgRr1vSJGwWDgUjuGWV7kHm/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 11',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/13aDbjZDq44RmKhzmz5-vRgEZVqSmQp2G/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 12',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1dDvIx6FhX42ZspQ7wLIbDahxiDZCUxim/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 13',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1y0kKyEAlArFw-fa_b-4scPaJwKaj3Nyg/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 14',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1DHuCFoXyUPvvhCSRZYsGqDlKq43SyZ8t/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 15',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1xOYOSY9OtZHl8HWuK8tLcIJvPfN_Qg9z/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 16',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1vKJCr6DeLWqPwmzuHGWMpcp1CA7uTcVk/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 17',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1rWTbVvo-D24uXHSs45XUxQ_JP1k9HsWU/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 18',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1eq8YFJqzqOc2w0GXtuY8YxGtjjlQHM2D/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 19',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1Jc6T7iWxRBiGLM214Af2_vOpnQjxmxqq/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 20',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/11ShZYnIRJFZf28gErSNbJqFqX1i_Dx0R/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 21',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1qvOORTQyxfJauT-0wo8PntxWHsG80HTz/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 22',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1hHPl2eMqQgg3Zo45Cww_dAjMvUsz30l3/view?usp=drive_link'
+    },
+    {
+      name: 'Longform 23',
+      category: 'vlogs',
+      url: 'https://drive.google.com/file/d/1p0nbYefxUUIczZj_zScl5AHAMlvLYf4M/view?usp=drive_link'
+    }
+  ];
+
+  const allVideos = [...adsVideos, ...ugcVideos, ...vslVideos, ...facelessVideos, ...shortsVideos, ...vlogsVideos].map(video => ({
     ...video,
     embedUrl: getEmbedUrl(video.url)
   }));
@@ -243,7 +408,10 @@ const VideoEditingPortfolio = ({ onBack }) => {
   }, [selectedCategory]);
 
   const getAspectRatio = (category) => {
-    return category === 'faceless' ? 'aspect-video' : 'aspect-[9/16]';
+    if (category === 'faceless' || category === 'vlogs') {
+      return 'aspect-video';
+    }
+    return 'aspect-[9/16]';
   };
 
   // Generate staggered spacing for masonry layout
@@ -288,8 +456,8 @@ const VideoEditingPortfolio = ({ onBack }) => {
             High-performing videos that drive results
           </p>
           
-          {/* View All Examples Button */}
-          <div className="mt-8">
+          {/* View All Examples and Testimonials Buttons */}
+          <div className="mt-8 flex flex-wrap gap-4">
             <a
               href="https://drive.google.com/drive/folders/1WTgknvjsLoo65CI_K-Dh1PypW5ciPUwV?usp=drive_link"
               target="_blank"
@@ -304,6 +472,16 @@ const VideoEditingPortfolio = ({ onBack }) => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
               View All My Example Work
+            </a>
+            <a
+              href="#testimonials"
+              className={`inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all duration-300 ${
+                isDark
+                  ? 'bg-gray-700 text-white hover:bg-gray-600 shadow-lg hover:shadow-xl'
+                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300 shadow-lg hover:shadow-xl'
+              } transform hover:scale-105`}
+            >
+              View Testimonials
             </a>
           </div>
         </div>
@@ -327,22 +505,19 @@ const VideoEditingPortfolio = ({ onBack }) => {
           ))}
         </div>
 
-        {/* Masonry/Staggered Grid Layout */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6">
+        {/* Grid Layout - 6 videos per row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6">
           {videos.map((video, index) => {
-            const spacing = getStaggeredSpacing(index);
             return (
               <div
                 key={index}
-                className={`break-inside-avoid rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transform hover:scale-[1.02] transition-all duration-300 animate-fade-in border ${
+                className={`rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transform hover:scale-[1.02] transition-all duration-300 animate-fade-in border ${
                   isDark 
                     ? 'bg-gray-800 border-gray-700' 
                     : 'bg-white border-gray-200'
                 }`}
                 style={{ 
-                  animationDelay: `${index * 0.05}s`,
-                  marginTop: spacing.top,
-                  marginBottom: spacing.bottom
+                  animationDelay: `${index * 0.05}s`
                 }}
               >
                 {/* Embedded Video */}
@@ -381,11 +556,19 @@ const VideoEditingPortfolio = ({ onBack }) => {
                             ? isDark
                               ? 'bg-green-900/50 text-green-200 border-green-700/30'
                               : 'bg-green-100 text-green-800 border-green-200'
-                            : isDark
-                              ? 'bg-orange-900/50 text-orange-200 border-orange-700/30'
-                              : 'bg-orange-100 text-orange-800 border-orange-200'
+                            : video.category === 'shorts'
+                              ? isDark
+                                ? 'bg-pink-900/50 text-pink-200 border-pink-700/30'
+                                : 'bg-pink-100 text-pink-800 border-pink-200'
+                              : video.category === 'vlogs'
+                                ? isDark
+                                  ? 'bg-indigo-900/50 text-indigo-200 border-indigo-700/30'
+                                  : 'bg-indigo-100 text-indigo-800 border-indigo-200'
+                                : isDark
+                                  ? 'bg-orange-900/50 text-orange-200 border-orange-700/30'
+                                  : 'bg-orange-100 text-orange-800 border-orange-200'
                     }`}>
-                      {video.category.toUpperCase()}
+                      {video.category === 'vlogs' ? 'LONGFORM' : video.category.toUpperCase()}
                     </span>
                   </div>
                   <h3 className={`text-base md:text-lg font-bold line-clamp-2 transition-colors duration-300 ${

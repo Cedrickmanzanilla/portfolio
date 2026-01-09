@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import VideoEditingPortfolio from './VideoEditingPortfolio';
+import GraphicDesignPortfolio from './GraphicDesignPortfolio';
 import videoEditingBg from '../assets/Pngs/Video Editing Background.jpg';
 import graphicDesignBg from '../assets/Pngs/Graphic Designing.jpg';
 import programmingBg from '../assets/Pngs/Programming.jpg';
@@ -8,7 +9,33 @@ import programmingBg from '../assets/Pngs/Programming.jpg';
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState('video-editing');
   const [showVideoPortfolio, setShowVideoPortfolio] = useState(false);
+  const [showGraphicDesignPortfolio, setShowGraphicDesignPortfolio] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
   const { isDark } = useTheme();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const categories = [
     {
@@ -21,8 +48,8 @@ const Portfolio = () => {
     {
       id: 'graphic-design',
       title: 'Graphic Design',
-      status: 'coming-soon',
-      description: 'Coming soon',
+      status: 'active',
+      description: 'Thumbnails, Graphics & Visual Designs',
       image: graphicDesignBg
     },
     {
@@ -38,6 +65,8 @@ const Portfolio = () => {
     if (category.status === 'active') {
       if (category.id === 'video-editing') {
         setShowVideoPortfolio(true);
+      } else if (category.id === 'graphic-design') {
+        setShowGraphicDesignPortfolio(true);
       }
     }
   };
@@ -46,12 +75,17 @@ const Portfolio = () => {
     return <VideoEditingPortfolio onBack={() => setShowVideoPortfolio(false)} />;
   }
 
+  if (showGraphicDesignPortfolio) {
+    return <GraphicDesignPortfolio onBack={() => setShowGraphicDesignPortfolio(false)} />;
+  }
+
   return (
     <section
+      ref={sectionRef}
       id="portfolio"
       className={`py-24 px-6 md:px-8 lg:px-12 transition-colors duration-300 ${
         isDark ? 'bg-gray-900' : 'bg-gray-50'
-      }`}
+      } ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
     >
       <div className="w-full max-w-7xl mx-auto">
         <h2 className={`text-4xl md:text-5xl font-bold text-center mb-16 transition-colors duration-300 ${

@@ -1,7 +1,33 @@
+import { useState, useEffect, useRef } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 
 const About = () => {
   const { isDark } = useTheme();
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
   
   const tools = [
     'CapCut Pro',
@@ -46,10 +72,11 @@ const About = () => {
 
   return (
     <section
+      ref={sectionRef}
       id="about"
       className={`py-24 px-6 md:px-8 lg:px-12 transition-colors duration-300 ${
         isDark ? 'bg-gray-800' : 'bg-gray-50'
-      }`}
+      } ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
     >
       <div className="w-full max-w-6xl mx-auto">
         <h2 className={`text-4xl md:text-5xl font-bold text-center mb-16 transition-colors duration-300 ${
@@ -165,7 +192,7 @@ const About = () => {
                 isDark ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'
               }`}>
                 <h5 className={`text-lg font-semibold mb-2 transition-colors duration-300 ${
-                  isDark ? 'text-navy-light' : 'text-navy'
+                  isDark ? 'text-white' : 'text-gray-900'
                 }`}>
                   Scriptwriting
                 </h5>
@@ -175,7 +202,7 @@ const About = () => {
                 isDark ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'
               }`}>
                 <h5 className={`text-lg font-semibold mb-2 transition-colors duration-300 ${
-                  isDark ? 'text-navy-light' : 'text-navy'
+                  isDark ? 'text-white' : 'text-gray-900'
                 }`}>
                   Graphic Design
                 </h5>
