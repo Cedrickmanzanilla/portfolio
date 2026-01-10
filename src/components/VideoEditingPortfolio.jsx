@@ -6,6 +6,22 @@ const VideoEditingPortfolio = ({ onBack }) => {
   const [videos, setVideos] = useState([]);
   const { isDark } = useTheme();
 
+  // Listen for portfolio navigation from header
+  useEffect(() => {
+    const handlePortfolioNav = () => {
+      onBack();
+      setTimeout(() => {
+        const element = document.getElementById('portfolio');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    };
+
+    window.addEventListener('scrollToPortfolio', handlePortfolioNav);
+    return () => window.removeEventListener('scrollToPortfolio', handlePortfolioNav);
+  }, [onBack]);
+
   const categories = [
     { id: 'all', name: 'All' },
     { id: 'ads', name: 'Ads' },
@@ -428,10 +444,10 @@ const VideoEditingPortfolio = ({ onBack }) => {
   };
 
   return (
-    <section className={`min-h-screen py-24 px-6 md:px-8 lg:px-12 transition-colors duration-300 ${
+    <section className={`min-h-screen py-24 px-2 sm:px-4 transition-colors duration-300 ${
       isDark ? 'bg-gray-900' : 'bg-gray-50'
     }`}>
-      <div className="w-full max-w-7xl mx-auto">
+      <div className="w-full max-w-[95%] lg:max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-12">
           <button

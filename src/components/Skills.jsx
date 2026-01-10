@@ -1,9 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import pythonIcon from '../assets/Pngs/Python.png';
-import dartIcon from '../assets/Pngs/Dart.webp';
-import javaIcon from '../assets/Pngs/Java.png';
-import phpIcon from '../assets/Pngs/Php.png';
-import sqlIcon from '../assets/Pngs/Sql.png';
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,30 +17,24 @@ const Skills = () => {
       priority: 'primary',
       description: 'UGC, VSL, Ads, Faceless Videos & more',
       icon: '🎬',
-      proficiency: 95 // Highest
+      proficiency: 95
     },
     {
       title: 'Web & Mobile Development',
       priority: 'secondary',
       description: 'React, Node.js, Express, MySQL & more',
       icon: '💻',
-      proficiency: 75 // Second highest
+      proficiency: 75
     }
   ];
 
   const programmingLanguages = [
-    { name: 'C#', icon: '/portfolio/csharp-icon.jpg' }, // Using public folder due to special character in filename
-    { name: 'Python', icon: pythonIcon },
-    { name: 'Dart', icon: dartIcon },
-    { name: 'Java', icon: javaIcon },
-    { name: 'PHP', icon: phpIcon },
-    { name: 'SQL', icon: sqlIcon }
-  ];
-
-  const otherSkills = [
-    { name: 'AI Specialist', priority: 'elevated', proficiency: 60 },
-    { name: 'Scriptwriting', priority: 'normal', proficiency: 60 },
-    { name: 'Graphic Design', priority: 'normal', proficiency: 60 }
+    { name: 'C#' },
+    { name: 'Python' },
+    { name: 'Dart' },
+    { name: 'Java' },
+    { name: 'PHP' },
+    { name: 'SQL' }
   ];
 
   useEffect(() => {
@@ -54,7 +43,6 @@ const Skills = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !isVisible) {
             setIsVisible(true);
-            // Animate bars from 0 to target height with staggered delays
             const targetHeights = {
               videoEditing: 95,
               webDev: 75,
@@ -63,14 +51,13 @@ const Skills = () => {
               graphicDesign: 60
             };
 
-            // Set target heights with staggered delays for smooth animation
             Object.keys(targetHeights).forEach((key, index) => {
               setTimeout(() => {
                 setAnimatedHeights((prev) => ({
                   ...prev,
                   [key]: targetHeights[key]
                 }));
-              }, index * 150); // Stagger animation by 150ms per bar
+              }, index * 150);
             });
           }
         });
@@ -93,142 +80,140 @@ const Skills = () => {
     <section
       id="skills"
       ref={sectionRef}
-      className="py-24 px-6 md:px-8 lg:px-12 bg-navy"
+      className="py-16 sm:py-20 md:py-24 px-2 sm:px-4 bg-navy"
     >
-      <div className="w-full max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
+      <div className="w-full max-w-full lg:max-w-[98%] mx-auto">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-8 sm:mb-12 md:mb-16">
           Skills
         </h2>
 
         {/* Skills Proficiency Graph */}
-        <div className="mb-16">
-          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-8">
+        <div className="mb-12 sm:mb-16">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white text-center mb-6 sm:mb-8">
             Skills Proficiency
           </h3>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 lg:p-12 border-2 border-white/20">
-            <div className="flex items-end justify-center gap-3 md:gap-4 lg:gap-6 h-64 md:h-80 min-h-[256px]">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 sm:p-6 md:p-8 lg:p-12 border-2 border-white/20 overflow-x-auto">
+            <div className="flex items-end justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 h-64 sm:h-80 md:h-96 lg:h-[28rem] min-h-[256px] sm:min-h-[320px] md:min-h-[384px] w-full">
               {/* Video Editing - Highest */}
-              <div className="flex flex-col items-center gap-2 md:gap-3 flex-1 max-w-[100px] md:max-w-[120px]">
-                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px]">
-                  <div className={`absolute -top-6 md:-top-8 left-1/2 transform -translate-x-1/2 text-white font-bold text-xs md:text-sm lg:text-base whitespace-nowrap z-10 transition-opacity duration-500 ${
+              <div className="flex flex-col items-center gap-2 sm:gap-3 flex-1 max-w-[80px] sm:max-w-[100px] md:max-w-[140px] lg:max-w-[180px]">
+                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px] sm:min-h-[250px] md:min-h-[300px]">
+                  <div className={`absolute -top-4 sm:-top-6 md:-top-8 left-1/2 transform -translate-x-1/2 text-white font-bold text-[10px] sm:text-xs md:text-sm lg:text-base whitespace-nowrap z-10 transition-opacity duration-500 ${
                     animatedHeights.videoEditing > 0 ? 'opacity-100' : 'opacity-0'
                   }`}>
                     95%
                   </div>
                   <div 
-                    className="w-full bg-gradient-to-t from-yellow-400 via-yellow-350 to-yellow-300 rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 shadow-lg border-2 border-yellow-200/50"
+                    className="w-full bg-navy-dark rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 shadow-lg border-2 border-white/20"
                     style={{ 
                       height: `${animatedHeights.videoEditing}%`, 
-                      minHeight: `${(animatedHeights.videoEditing / 100) * 200}px`,
+                      minHeight: `${(animatedHeights.videoEditing / 100) * 250}px`,
                       transformOrigin: 'bottom',
                       transition: 'height 1s ease-out, min-height 1s ease-out'
                     }}
                   ></div>
                 </div>
-                <span className="text-white font-semibold text-xs md:text-sm lg:text-base text-center leading-tight">Video Editing</span>
+                <span className="text-white font-semibold text-[10px] sm:text-xs md:text-sm lg:text-base text-center leading-tight mt-2 whitespace-nowrap">Video Editing</span>
               </div>
 
               {/* Web & Mobile Development - Second */}
-              <div className="flex flex-col items-center gap-2 md:gap-3 flex-1 max-w-[100px] md:max-w-[120px]">
-                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px]">
-                  <div className={`absolute -top-6 md:-top-8 left-1/2 transform -translate-x-1/2 text-white font-bold text-xs md:text-sm lg:text-base whitespace-nowrap z-10 transition-opacity duration-500 ${
+              <div className="flex flex-col items-center gap-2 sm:gap-3 flex-1 max-w-[80px] sm:max-w-[100px] md:max-w-[140px] lg:max-w-[180px]">
+                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px] sm:min-h-[250px] md:min-h-[300px]">
+                  <div className={`absolute -top-4 sm:-top-6 md:-top-8 left-1/2 transform -translate-x-1/2 text-white font-bold text-[10px] sm:text-xs md:text-sm lg:text-base whitespace-nowrap z-10 transition-opacity duration-500 ${
                     animatedHeights.webDev > 0 ? 'opacity-100' : 'opacity-0'
                   }`}>
                     75%
                   </div>
                   <div 
-                    className="w-full bg-gradient-to-t from-blue-500 via-blue-400 to-blue-300 rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 shadow-lg border-2 border-blue-200/50"
+                    className="w-full bg-navy-dark rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 shadow-lg border-2 border-white/20"
                     style={{ 
                       height: `${animatedHeights.webDev}%`, 
-                      minHeight: `${(animatedHeights.webDev / 100) * 200}px`,
+                      minHeight: `${(animatedHeights.webDev / 100) * 250}px`,
                       transformOrigin: 'bottom',
                       transition: 'height 1s ease-out, min-height 1s ease-out'
                     }}
                   ></div>
                 </div>
-                <span className="text-white font-semibold text-xs md:text-sm lg:text-base text-center leading-tight">Web & Mobile Dev</span>
+                <span className="text-white font-semibold text-[10px] sm:text-xs md:text-sm lg:text-base text-center leading-tight mt-2">Web & Mobile Dev</span>
               </div>
 
               {/* AI Specialist - Equal */}
-              <div className="flex flex-col items-center gap-2 md:gap-3 flex-1 max-w-[100px] md:max-w-[120px]">
-                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px]">
-                  <div className={`absolute -top-6 md:-top-8 left-1/2 transform -translate-x-1/2 text-white font-bold text-xs md:text-sm lg:text-base whitespace-nowrap z-10 transition-opacity duration-500 ${
+              <div className="flex flex-col items-center gap-2 sm:gap-3 flex-1 max-w-[80px] sm:max-w-[100px] md:max-w-[140px] lg:max-w-[180px]">
+                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px] sm:min-h-[250px] md:min-h-[300px]">
+                  <div className={`absolute -top-4 sm:-top-6 md:-top-8 left-1/2 transform -translate-x-1/2 text-white font-bold text-[10px] sm:text-xs md:text-sm lg:text-base whitespace-nowrap z-10 transition-opacity duration-500 ${
                     animatedHeights.aiSpecialist > 0 ? 'opacity-100' : 'opacity-0'
                   }`}>
                     60%
                   </div>
                   <div 
-                    className="w-full bg-gradient-to-t from-purple-500 via-purple-400 to-purple-300 rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 shadow-lg border-2 border-purple-200/50"
+                    className="w-full bg-navy-dark rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 shadow-lg border-2 border-white/20"
                     style={{ 
                       height: `${animatedHeights.aiSpecialist}%`, 
-                      minHeight: `${(animatedHeights.aiSpecialist / 100) * 200}px`,
+                      minHeight: `${(animatedHeights.aiSpecialist / 100) * 250}px`,
                       transformOrigin: 'bottom',
                       transition: 'height 1s ease-out, min-height 1s ease-out'
                     }}
                   ></div>
                 </div>
-                <span className="text-white font-semibold text-xs md:text-sm lg:text-base text-center leading-tight">AI Specialist</span>
+                <span className="text-white font-semibold text-[10px] sm:text-xs md:text-sm lg:text-base text-center leading-tight mt-2">AI Specialist</span>
               </div>
 
               {/* Scriptwriting - Equal */}
-              <div className="flex flex-col items-center gap-2 md:gap-3 flex-1 max-w-[100px] md:max-w-[120px]">
-                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px]">
-                  <div className={`absolute -top-6 md:-top-8 left-1/2 transform -translate-x-1/2 text-white font-bold text-xs md:text-sm lg:text-base whitespace-nowrap z-10 transition-opacity duration-500 ${
+              <div className="flex flex-col items-center gap-2 sm:gap-3 flex-1 max-w-[80px] sm:max-w-[100px] md:max-w-[140px] lg:max-w-[180px]">
+                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px] sm:min-h-[250px] md:min-h-[300px]">
+                  <div className={`absolute -top-4 sm:-top-6 md:-top-8 left-1/2 transform -translate-x-1/2 text-white font-bold text-[10px] sm:text-xs md:text-sm lg:text-base whitespace-nowrap z-10 transition-opacity duration-500 ${
                     animatedHeights.scriptwriting > 0 ? 'opacity-100' : 'opacity-0'
                   }`}>
                     60%
                   </div>
                   <div 
-                    className="w-full bg-gradient-to-t from-green-500 via-green-400 to-green-300 rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 shadow-lg border-2 border-green-200/50"
+                    className="w-full bg-navy-dark rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 shadow-lg border-2 border-white/20"
                     style={{ 
                       height: `${animatedHeights.scriptwriting}%`, 
-                      minHeight: `${(animatedHeights.scriptwriting / 100) * 200}px`,
+                      minHeight: `${(animatedHeights.scriptwriting / 100) * 250}px`,
                       transformOrigin: 'bottom',
                       transition: 'height 1s ease-out, min-height 1s ease-out'
                     }}
                   ></div>
                 </div>
-                <span className="text-white font-semibold text-xs md:text-sm lg:text-base text-center leading-tight">Scriptwriting</span>
+                <span className="text-white font-semibold text-[10px] sm:text-xs md:text-sm lg:text-base text-center leading-tight mt-2">Scriptwriting</span>
               </div>
 
               {/* Graphic Design - Equal */}
-              <div className="flex flex-col items-center gap-2 md:gap-3 flex-1 max-w-[100px] md:max-w-[120px]">
-                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px]">
-                  <div className={`absolute -top-6 md:-top-8 left-1/2 transform -translate-x-1/2 text-white font-bold text-xs md:text-sm lg:text-base whitespace-nowrap z-10 transition-opacity duration-500 ${
+              <div className="flex flex-col items-center gap-2 sm:gap-3 flex-1 max-w-[80px] sm:max-w-[100px] md:max-w-[140px] lg:max-w-[180px]">
+                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px] sm:min-h-[250px] md:min-h-[300px]">
+                  <div className={`absolute -top-4 sm:-top-6 md:-top-8 left-1/2 transform -translate-x-1/2 text-white font-bold text-[10px] sm:text-xs md:text-sm lg:text-base whitespace-nowrap z-10 transition-opacity duration-500 ${
                     animatedHeights.graphicDesign > 0 ? 'opacity-100' : 'opacity-0'
                   }`}>
                     60%
                   </div>
                   <div 
-                    className="w-full bg-gradient-to-t from-pink-500 via-pink-400 to-pink-300 rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 shadow-lg border-2 border-pink-200/50"
+                    className="w-full bg-navy-dark rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 shadow-lg border-2 border-white/20"
                     style={{ 
                       height: `${animatedHeights.graphicDesign}%`, 
-                      minHeight: `${(animatedHeights.graphicDesign / 100) * 200}px`,
+                      minHeight: `${(animatedHeights.graphicDesign / 100) * 250}px`,
                       transformOrigin: 'bottom',
                       transition: 'height 1s ease-out, min-height 1s ease-out'
                     }}
                   ></div>
                 </div>
-                <span className="text-white font-semibold text-xs md:text-sm lg:text-base text-center leading-tight">Graphic Design</span>
+                <span className="text-white font-semibold text-[10px] sm:text-xs md:text-sm lg:text-base text-center leading-tight mt-2">Graphic Design</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Priority Skills */}
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-10 mb-12">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10 mb-8 sm:mb-12">
           {prioritySkills.map((skill, index) => (
             <div
               key={index}
-              className={`bg-white/10 backdrop-blur-sm rounded-lg p-8 lg:p-10 text-center hover:bg-white/20 transform hover:scale-105 transition-all duration-300 animate-fade-in border-2 border-white/20 ${
-                skill.priority === 'primary' ? 'lg:scale-105' : ''
-              }`}
+              className="bg-white/10 backdrop-blur-sm rounded-lg p-8 lg:p-10 text-center hover:bg-white/20 transform hover:scale-105 transition-all duration-300 animate-fade-in border-2 border-white/20"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className={`inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 ${
                 skill.priority === 'primary' 
-                  ? 'bg-yellow-400 text-navy' 
-                  : 'bg-blue-400 text-white'
+                  ? 'bg-white text-navy' 
+                  : 'bg-white/20 text-white'
               }`}>
                 {skill.priority === 'primary' ? 'Primary Focus' : 'Secondary Focus'}
               </div>
@@ -240,7 +225,7 @@ const Skills = () => {
               }`}>
                 {skill.title}
               </h3>
-              <p className="text-gray-200 text-lg">
+              <p className="text-white/80 text-lg">
                 {skill.description}
               </p>
             </div>
@@ -248,44 +233,18 @@ const Skills = () => {
         </div>
 
         {/* Programming Languages */}
-        <div className="mb-12">
-          <h3 className="text-2xl font-bold text-white text-center mb-6">Programming Languages</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div>
+          <h3 className="text-xl sm:text-2xl font-bold text-white text-center mb-4 sm:mb-6">Programming Languages</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
             {programmingLanguages.map((lang, index) => (
               <div
                 key={index}
                 className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center hover:bg-white/20 transform hover:scale-105 transition-all duration-300 border-2 border-white/20"
               >
-                <div className="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-                  <img 
-                    src={lang.icon} 
-                    alt={lang.name}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h4 className="text-lg font-bold text-white">{lang.name}</h4>
+                <h4 className="text-xl sm:text-2xl font-bold text-white">{lang.name}</h4>
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Other Skills */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {otherSkills.map((skill, index) => (
-            <div
-              key={index}
-              className={`bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center hover:bg-white/20 transform hover:scale-105 transition-all duration-300 animate-fade-in border-2 border-white/20 ${
-                skill.priority === 'elevated' ? 'lg:scale-105' : ''
-              }`}
-              style={{ animationDelay: `${(index + 2) * 0.1}s` }}
-            >
-              <h3 className={`font-bold text-white ${
-                skill.priority === 'elevated' ? 'text-2xl' : 'text-xl'
-              }`}>
-                {skill.name}
-              </h3>
-            </div>
-          ))}
         </div>
       </div>
     </section>

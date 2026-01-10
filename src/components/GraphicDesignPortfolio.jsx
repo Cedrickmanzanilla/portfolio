@@ -6,6 +6,22 @@ const GraphicDesignPortfolio = ({ onBack }) => {
   const sectionRef = useRef(null);
   const { isDark } = useTheme();
 
+  // Listen for portfolio navigation from header
+  useEffect(() => {
+    const handlePortfolioNav = () => {
+      onBack();
+      setTimeout(() => {
+        const element = document.getElementById('portfolio');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    };
+
+    window.addEventListener('scrollToPortfolio', handlePortfolioNav);
+    return () => window.removeEventListener('scrollToPortfolio', handlePortfolioNav);
+  }, [onBack]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -96,11 +112,11 @@ const GraphicDesignPortfolio = ({ onBack }) => {
   return (
     <section
       ref={sectionRef}
-      className={`min-h-screen py-24 px-6 md:px-8 lg:px-12 transition-colors duration-300 ${
+      className={`min-h-screen py-24 px-2 sm:px-4 transition-colors duration-300 ${
         isDark ? 'bg-gray-900' : 'bg-gray-50'
       } ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
     >
-      <div className="w-full max-w-7xl mx-auto">
+      <div className="w-full max-w-[95%] lg:max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-12">
           <button

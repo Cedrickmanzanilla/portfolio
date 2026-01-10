@@ -8,7 +8,7 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState('home');
   const { isDark, toggleTheme } = useTheme();
 
-  const sections = ['home', 'about', 'skills', 'portfolio', 'services', 'contact'];
+  const sections = ['home', 'about', 'skills', 'portfolio', 'services', 'testimonials', 'contact'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,6 +42,11 @@ const Header = () => {
   }, []);
 
   const scrollToSection = (id) => {
+    // If clicking portfolio while viewing detail, trigger custom event
+    if (id === 'portfolio') {
+      window.dispatchEvent(new CustomEvent('scrollToPortfolio'));
+    }
+    
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -55,20 +60,14 @@ const Header = () => {
     const baseClass = 'transition-all duration-300 font-medium relative';
     
     if (isActive) {
-      return `${baseClass} ${
+      return `${baseClass} text-white font-bold ${
         isDark 
-          ? 'text-blue-400' 
-          : 'text-yellow-300'
-      } ${
-        isDark 
-          ? 'after:bg-blue-400' 
-          : 'after:bg-yellow-300'
-      } after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:rounded-full`;
+          ? 'after:bg-white' 
+          : 'after:bg-white'
+      } after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:rounded-full after:shadow-lg`;
     }
     
-    return `${baseClass} ${
-      isDark ? 'text-white hover:text-blue-400' : 'text-white hover:text-blue-300'
-    }`;
+    return `${baseClass} text-white/80 hover:text-white`;
   };
 
   return (
@@ -79,19 +78,20 @@ const Header = () => {
           : isScrolled ? 'bg-navy shadow-lg' : 'bg-navy'
       }`}
     >
-      <nav className="w-full max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-4">
+      <nav className="w-full max-w-full mx-auto px-2 sm:px-4 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           <button
             onClick={() => scrollToSection('home')}
-            className={`text-2xl font-bold transition-colors cursor-pointer ${
+            className={`text-lg sm:text-xl md:text-2xl font-bold transition-colors cursor-pointer ${
               isDark ? 'text-white hover:text-blue-400' : 'text-white hover:text-blue-300'
             }`}
           >
-            Cedrick Manzanilla
+            <span className="hidden sm:inline">Cedrick Manzanilla</span>
+            <span className="sm:hidden">C. Manzanilla</span>
           </button>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
             <button
               onClick={() => scrollToSection('home')}
               className={getNavButtonClass('home')}
@@ -195,8 +195,8 @@ const Header = () => {
                 onClick={() => scrollToSection(section)}
                 className={`block w-full text-left font-medium transition-colors capitalize ${
                   activeSection === section
-                    ? 'text-blue-400'
-                    : 'text-white hover:text-blue-400'
+                    ? 'text-white font-bold'
+                    : 'text-white/80 hover:text-white'
                 }`}
               >
                 {section === 'home' ? 'Home' : section}
