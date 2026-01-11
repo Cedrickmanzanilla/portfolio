@@ -97,7 +97,7 @@ const Hero = () => {
             <div className="pt-4 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
                 onClick={() => scrollToSection('portfolio')}
-                className="bg-navy text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-navy-dark transform hover:scale-105 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-navy text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-navy-dark transform hover:scale-110 hover:shadow-2xl shadow-lg transition-all duration-300 cursor-pointer active:scale-95"
               >
                 View My Work
               </button>
@@ -105,10 +105,10 @@ const Hero = () => {
                 href="https://drive.google.com/file/d/1g-7WTzVLQhnkJUx3AI_A-Jrp1H4N7yJw/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transform hover:scale-105 shadow-lg hover:shadow-xl transition-all duration-300 text-center ${
+                className={`px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transform hover:scale-110 hover:shadow-2xl shadow-lg transition-all duration-300 text-center cursor-pointer active:scale-95 ${
                   isDark
-                    ? 'bg-gray-800 text-white border-2 border-gray-700 hover:bg-gray-700'
-                    : 'bg-white text-navy border-2 border-navy hover:bg-gray-50'
+                    ? 'bg-gray-800 text-white border-2 border-gray-700 hover:bg-gray-700 hover:border-gray-600'
+                    : 'bg-white text-navy border-2 border-navy hover:bg-gray-50 hover:border-navy-dark'
                 }`}
               >
                 View Resume

@@ -335,7 +335,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-navy text-white px-6 py-3 md:py-4 rounded-lg text-base md:text-lg font-semibold hover:bg-navy-dark transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="w-full bg-navy text-white px-6 py-3 md:py-4 rounded-lg text-base md:text-lg font-semibold hover:bg-navy-dark transform hover:scale-110 hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none cursor-pointer active:scale-95"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
@@ -436,7 +436,7 @@ const Contact = () => {
                     href={item.href}
                     target={item.isLink ? "_blank" : undefined}
                     rel={item.isLink ? "noopener noreferrer" : undefined}
-                    className="w-full bg-navy text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-navy-dark transform hover:scale-105 transition-all text-center text-xs sm:text-sm md:text-base"
+                    className="w-full bg-navy text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-navy-dark transform hover:scale-110 hover:shadow-xl transition-all duration-300 text-center text-xs sm:text-sm md:text-base cursor-pointer active:scale-95"
                   >
                     {item.buttonText}
                   </a>
@@ -482,7 +482,7 @@ const Contact = () => {
                     href={item.href}
                     target={item.isLink ? "_blank" : undefined}
                     rel={item.isLink ? "noopener noreferrer" : undefined}
-                    className="bg-navy text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg hover:bg-navy-dark transform hover:scale-105 transition-all text-center text-xs sm:text-sm md:text-base font-semibold flex items-center justify-center shrink-0 w-full sm:w-auto"
+                    className="bg-navy text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg hover:bg-navy-dark transform hover:scale-110 hover:shadow-xl transition-all duration-300 text-center text-xs sm:text-sm md:text-base font-semibold flex items-center justify-center shrink-0 w-full sm:w-auto cursor-pointer active:scale-95"
                   >
                     {item.buttonText}
                   </a>

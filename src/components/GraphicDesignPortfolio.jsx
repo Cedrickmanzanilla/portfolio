@@ -121,7 +121,7 @@ const GraphicDesignPortfolio = ({ onBack }) => {
         <div className="mb-12">
           <button
             onClick={onBack}
-            className={`mb-6 font-semibold flex items-center gap-2 transition-colors duration-300 ${
+            className={`mb-6 font-semibold flex items-center gap-2 transition-all duration-300 cursor-pointer hover:scale-110 hover:gap-3 ${
               isDark ? 'text-navy-light hover:text-blue-400' : 'text-navy hover:text-navy-dark'
             }`}
           >

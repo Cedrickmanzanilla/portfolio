@@ -452,7 +452,7 @@ const VideoEditingPortfolio = ({ onBack }) => {
         <div className="mb-12">
           <button
             onClick={onBack}
-            className={`mb-6 font-semibold flex items-center gap-2 transition-colors duration-300 ${
+            className={`mb-6 font-semibold flex items-center gap-2 transition-all duration-300 cursor-pointer hover:scale-110 hover:gap-3 ${
               isDark ? 'text-navy-light hover:text-blue-400' : 'text-navy hover:text-navy-dark'
             }`}
           >
@@ -478,11 +478,11 @@ const VideoEditingPortfolio = ({ onBack }) => {
               href="https://drive.google.com/drive/folders/1WTgknvjsLoo65CI_K-Dh1PypW5ciPUwV?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all duration-300 ${
+              className={`inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all duration-300 cursor-pointer ${
                 isDark
-                  ? 'bg-navy text-white hover:bg-navy-dark shadow-lg hover:shadow-xl'
-                  : 'bg-navy text-white hover:bg-navy-dark shadow-lg hover:shadow-xl'
-              } transform hover:scale-105`}
+                  ? 'bg-navy text-white hover:bg-navy-dark shadow-lg hover:shadow-2xl'
+                  : 'bg-navy text-white hover:bg-navy-dark shadow-lg hover:shadow-2xl'
+              } transform hover:scale-110 active:scale-95`}
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -491,11 +491,11 @@ const VideoEditingPortfolio = ({ onBack }) => {
             </a>
             <a
               href="#testimonials"
-              className={`inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all duration-300 ${
+              className={`inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all duration-300 cursor-pointer ${
                 isDark
-                  ? 'bg-gray-700 text-white hover:bg-gray-600 shadow-lg hover:shadow-xl'
-                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300 shadow-lg hover:shadow-xl'
-              } transform hover:scale-105`}
+                  ? 'bg-gray-700 text-white hover:bg-gray-600 shadow-lg hover:shadow-2xl'
+                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300 shadow-lg hover:shadow-2xl'
+              } transform hover:scale-110 active:scale-95`}
             >
               View Testimonials
             </a>
@@ -508,13 +508,13 @@ const VideoEditingPortfolio = ({ onBack }) => {
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer ${
                 selectedCategory === category.id
                   ? 'bg-navy text-white shadow-lg scale-105'
                   : isDark
-                    ? 'bg-gray-800 text-gray-300 hover:bg-gray-700 border-2 border-gray-700'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border-2 border-gray-200'
-              }`}
+                    ? 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:scale-110 border-2 border-gray-700'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 hover:scale-110 border-2 border-gray-200'
+              } active:scale-95`}
             >
               {category.name}
             </button>

@@ -166,7 +166,7 @@ const Portfolio = () => {
                   {category.description}
                 </p>
                 {category.status === 'active' ? (
-                  <button className="bg-navy text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-navy-dark transform hover:scale-105 transition-all font-medium w-full text-sm sm:text-base">
+                  <button className="bg-navy text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-navy-dark transform hover:scale-110 hover:shadow-xl transition-all duration-300 font-medium w-full text-sm sm:text-base cursor-pointer active:scale-95">
                     View Portfolio
                   </button>
                 ) : (

@@ -57,17 +57,17 @@ const Header = () => {
 
   const getNavButtonClass = (sectionId) => {
     const isActive = activeSection === sectionId;
-    const baseClass = 'transition-all duration-300 font-medium relative';
+    const baseClass = 'transition-all duration-300 font-medium relative cursor-pointer';
     
     if (isActive) {
-      return `${baseClass} text-white font-bold ${
+      return `${baseClass} text-white font-bold hover:scale-110 ${
         isDark 
           ? 'after:bg-white' 
           : 'after:bg-white'
       } after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:rounded-full after:shadow-lg`;
     }
     
-    return `${baseClass} text-white/80 hover:text-white`;
+    return `${baseClass} text-white/80 hover:text-white hover:scale-110 hover:font-semibold`;
   };
 
   return (
@@ -82,7 +82,7 @@ const Header = () => {
         <div className="flex items-center justify-between relative">
           <button
             onClick={() => scrollToSection('home')}
-            className={`text-lg sm:text-xl md:text-2xl font-bold transition-colors cursor-pointer ${
+            className={`text-lg sm:text-xl md:text-2xl font-bold transition-all duration-300 cursor-pointer hover:scale-110 ${
               isDark ? 'text-white hover:text-blue-400' : 'text-white hover:text-blue-300'
             }`}
           >
@@ -132,7 +132,7 @@ const Header = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="ml-4 p-2 rounded-lg transition-colors bg-white/20 hover:bg-white/30 text-white"
+              className="ml-4 p-2 rounded-lg transition-all duration-300 bg-white/20 hover:bg-white/30 hover:scale-110 hover:rotate-12 text-white cursor-pointer"
               aria-label="Toggle theme"
             >
               {isDark ? (
@@ -147,7 +147,7 @@ const Header = () => {
           <div className="md:hidden flex items-center gap-2 sm:gap-4 z-50">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg transition-colors bg-white/20 hover:bg-white/30 text-white shrink-0"
+              className="p-2 rounded-lg transition-all duration-300 bg-white/20 hover:bg-white/30 hover:scale-110 hover:rotate-12 text-white shrink-0 cursor-pointer"
               aria-label="Toggle theme"
             >
               {isDark ? (
@@ -157,7 +157,7 @@ const Header = () => {
               )}
             </button>
             <button
-              className="text-white p-2 rounded-lg transition-colors bg-white/20 hover:bg-white/30 shrink-0"
+              className="text-white p-2 rounded-lg transition-all duration-300 bg-white/20 hover:bg-white/30 hover:scale-110 shrink-0 cursor-pointer"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -194,10 +194,10 @@ const Header = () => {
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className={`block w-full text-left font-medium transition-colors capitalize ${
+                className={`block w-full text-left font-medium transition-all duration-300 capitalize cursor-pointer hover:pl-2 hover:scale-105 ${
                   activeSection === section
                     ? 'text-white font-bold'
-                    : 'text-white/80 hover:text-white'
+                    : 'text-white/80 hover:text-white hover:font-semibold'
                 }`}
               >
                 {section === 'home' ? 'Home' : section}
