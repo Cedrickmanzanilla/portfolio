@@ -9,7 +9,7 @@ export default {
       colors: {
         navy: {
           DEFAULT: '#1e3a8a',
-          dark: '#1e40af',
+          dark: '#0f1e4d',
           light: '#3b82f6',
         },
       },

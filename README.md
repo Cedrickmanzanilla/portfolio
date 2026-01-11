@@ -28,38 +28,48 @@ A professional personal portfolio website built with React, Vite, Tailwind CSS, 
 ### Prerequisites
 - Node.js (v16 or higher)
 - npm or yarn
+- Git (to clone the repository)
 
-### Installation
+### Installation from GitHub
 
-1. **Install Frontend Dependencies**
+1. **Clone the repository**
    ```bash
-   cd "Portfolio/Cedrick Portfolio"
+   git clone <your-repo-url>
+   cd portfolio-master
+   ```
+
+2. **Install Dependencies**
+   ```bash
    npm install
    ```
 
-2. **Install Backend Dependencies**
-   ```bash
-   cd ../../backend
-   npm install
+### Running the Application Locally
+
+#### For Windows (PowerShell) - RECOMMENDED:
+```powershell
+npm run dev:win
+```
+
+#### For Windows (Manual):
+```powershell
+# Clear NODE_ENV first
+$env:NODE_ENV = ''
+
+# Then run dev server
+npm run dev
+```
+
+#### For Mac/Linux:
+```bash
+npm run dev
+```
+
+3. **Open your browser and visit:**
+   ```
+   http://localhost:5173
    ```
 
-### Running the Application
-
-1. **Start the Backend Server** (Terminal 1)
-   ```bash
-   cd backend
-   npm start
-   # Server runs on http://localhost:5000
-   ```
-
-2. **Start the Frontend Development Server** (Terminal 2)
-   ```bash
-   cd "Portfolio/Cedrick Portfolio"
-   npm run dev
-   # Frontend runs on http://localhost:5173
-   ```
-
-3. Open your browser and visit `http://localhost:5173`
+> **Note:** If you encounter issues with NODE_ENV, see `QUICK_START.md` or `START_DEV.md` for detailed troubleshooting steps.
 
 ## Project Structure
 

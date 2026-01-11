@@ -183,9 +183,9 @@ const Contact = () => {
       icon: FaEnvelope,
       label: 'Email',
       value: 'cedrickmanzanilla4@gmail.com',
-      href: 'https://www.onlinejobs.ph/jobseekers/info/2966139',
-      buttonText: 'Visit Profile',
-      isLink: true,
+      href: 'mailto:cedrickmanzanilla4@gmail.com',
+      buttonText: 'Send Email',
+      isLink: false,
       spanRows: 2,
       isEmail: true
     }
@@ -450,13 +450,13 @@ const Contact = () => {
               return (
                 <div
                   key={index + 4}
-                  className={`col-span-1 sm:col-span-2 flex flex-row gap-4 sm:gap-6 p-4 sm:p-6 md:p-8 rounded-lg hover:opacity-90 transition-all border ${
+                  className={`col-span-1 sm:col-span-2 flex flex-col sm:flex-row gap-4 sm:gap-6 p-4 sm:p-6 md:p-8 rounded-lg hover:opacity-90 transition-all border ${
                     isDark 
                       ? 'bg-gray-800 border-gray-700 hover:bg-gray-750' 
                       : 'bg-white border-gray-200 hover:bg-gray-50'
                   }`}
                 >
-                  <div className="flex items-center gap-4 flex-1">
+                  <div className="flex items-center gap-4 flex-1 min-w-0">
                     <div className="bg-navy text-white p-3 sm:p-4 rounded-lg shrink-0">
                       <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
                     </div>
@@ -470,7 +470,7 @@ const Contact = () => {
                         href={item.href}
                         target={item.isLink ? "_blank" : undefined}
                         rel={item.isLink ? "noopener noreferrer" : undefined}
-                        className={`text-base sm:text-lg md:text-xl font-semibold transition-colors duration-300 block break-words mt-1 ${
+                        className={`text-sm sm:text-base md:text-lg font-semibold transition-colors duration-300 block break-words mt-1 ${
                           isDark ? 'text-white hover:text-blue-400' : 'text-gray-900 hover:text-navy'
                         }`}
                       >
@@ -482,7 +482,7 @@ const Contact = () => {
                     href={item.href}
                     target={item.isLink ? "_blank" : undefined}
                     rel={item.isLink ? "noopener noreferrer" : undefined}
-                    className="bg-navy text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-lg hover:bg-navy-dark transform hover:scale-105 transition-all text-center text-sm sm:text-base md:text-lg font-semibold flex items-center justify-center shrink-0"
+                    className="bg-navy text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg hover:bg-navy-dark transform hover:scale-105 transition-all text-center text-xs sm:text-sm md:text-base font-semibold flex items-center justify-center shrink-0 w-full sm:w-auto"
                   >
                     {item.buttonText}
                   </a>

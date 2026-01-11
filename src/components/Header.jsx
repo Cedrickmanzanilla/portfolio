@@ -79,7 +79,7 @@ const Header = () => {
       }`}
     >
       <nav className="w-full max-w-full mx-auto px-2 sm:px-4 py-3 sm:py-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between relative">
           <button
             onClick={() => scrollToSection('home')}
             className={`text-lg sm:text-xl md:text-2xl font-bold transition-colors cursor-pointer ${
@@ -144,24 +144,25 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-4">
+          <div className="md:hidden flex items-center gap-2 sm:gap-4 z-50">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg transition-colors bg-white/20 hover:bg-white/30 text-white"
+              className="p-2 rounded-lg transition-colors bg-white/20 hover:bg-white/30 text-white shrink-0"
               aria-label="Toggle theme"
             >
               {isDark ? (
-                <FaSun className="w-5 h-5" />
+                <FaSun className="w-5 h-5 sm:w-6 sm:h-6" />
               ) : (
-                <FaMoon className="w-5 h-5" />
+                <FaMoon className="w-5 h-5 sm:w-6 sm:h-6" />
               )}
             </button>
             <button
-              className="text-white"
+              className="text-white p-2 rounded-lg transition-colors bg-white/20 hover:bg-white/30 shrink-0"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
             >
               <svg
-                className="w-6 h-6"
+                className="w-6 h-6 sm:w-7 sm:h-7"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
