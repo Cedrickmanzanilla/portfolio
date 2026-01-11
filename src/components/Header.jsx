@@ -86,8 +86,8 @@ const Header = () => {
               isDark ? 'text-white hover:text-blue-400' : 'text-white hover:text-blue-300'
             }`}
           >
-            <span className="hidden sm:inline">Cedrick Manzanilla</span>
-            <span className="sm:hidden">C. Manzanilla</span>
+            <span className="hidden sm:inline">cdrck.exe</span>
+            <span className="sm:hidden">cdrck.exe</span>
           </button>
           
           {/* Desktop Menu */}

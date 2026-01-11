@@ -93,7 +93,7 @@ const About = () => {
             <p className={`text-base sm:text-lg md:text-xl leading-relaxed transition-colors duration-300 ${
               isDark ? 'text-gray-300' : 'text-gray-700'
             }`}>
-              I'm <strong className="text-navy font-bold">Cedrick Manzanilla</strong>, a results-driven Video Editor with 3 years of experience creating high-performing UGC, VSL, ad creatives, and faceless videos for brands and creators worldwide.
+              I'm <strong className={isDark ? 'text-navy-light font-bold' : 'text-navy font-bold'}>Cedrick Manzanilla</strong>, a results-driven Video Editor with 3 years of experience creating high-performing UGC, VSL, ad creatives, and faceless videos for brands and creators worldwide.
             </p>
             <p className={`text-base sm:text-lg md:text-xl leading-relaxed transition-colors duration-300 ${
               isDark ? 'text-gray-300' : 'text-gray-700'

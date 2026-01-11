@@ -81,12 +81,12 @@ const Hero = () => {
             <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight transition-colors duration-300 ${
               isDark ? 'text-white' : 'text-gray-900'
             }`}>
-              Hi, I'm <span className="text-navy">Cedrick</span>
+              Hi, I'm <span className={isDark ? 'text-navy-light' : 'text-navy'}>Cedrick</span>
             </h1>
             <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed transition-colors duration-300 ${
               isDark ? 'text-gray-300' : 'text-gray-700'
             }`}>
-              <span className="text-navy font-bold">Video Editor</span> | Web & Mobile Developer
+              <span className={isDark ? 'text-navy-light font-bold' : 'text-navy font-bold'}>Video Editor</span> | Web & Mobile Developer
             </h2>
             <p className={`text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 transition-colors duration-300 ${
               isDark ? 'text-gray-400' : 'text-gray-600'
