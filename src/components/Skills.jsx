@@ -38,43 +38,16 @@ const Skills = () => {
   ];
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !isVisible) {
-            setIsVisible(true);
-            const targetHeights = {
-              videoEditing: 95,
-              webDev: 75,
-              aiSpecialist: 60,
-              scriptwriting: 60,
-              graphicDesign: 60
-            };
-
-            Object.keys(targetHeights).forEach((key, index) => {
-              setTimeout(() => {
-                setAnimatedHeights((prev) => ({
-                  ...prev,
-                  [key]: targetHeights[key]
-                }));
-              }, index * 150);
-            });
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, [isVisible]);
+    // Set all heights immediately without animation
+    setAnimatedHeights({
+      videoEditing: 95,
+      webDev: 75,
+      aiSpecialist: 60,
+      scriptwriting: 60,
+      graphicDesign: 60
+    });
+    setIsVisible(true);
+  }, []);
 
   return (
     <section
@@ -92,111 +65,91 @@ const Skills = () => {
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white text-center mb-6 sm:mb-8">
             Skills Proficiency
           </h3>
-          <div className="bg-navy/30 backdrop-blur-sm rounded-lg p-4 sm:p-6 md:p-8 lg:p-12 border-2 border-navy-light/30 overflow-x-auto overflow-y-visible">
-            <div className="flex items-end justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 h-64 sm:h-80 md:h-96 lg:h-[28rem] min-h-[256px] sm:min-h-[320px] md:min-h-[384px] w-full relative">
+          <div className="bg-navy/30 backdrop-blur-sm rounded-lg p-4 sm:p-6 md:p-8 lg:p-12 border-2 border-navy-light/30 overflow-x-auto">
+            <div className="flex items-end justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 h-auto min-h-[300px] sm:min-h-[350px] md:min-h-[400px] w-full relative pt-12 sm:pt-16 md:pt-20">
               {/* Video Editing - Highest */}
-              <div className="flex flex-col items-center gap-2 sm:gap-3 flex-1 max-w-[80px] sm:max-w-[100px] md:max-w-[140px] lg:max-w-[180px]">
-                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px] sm:min-h-[250px] md:min-h-[300px] pb-8 sm:pb-10 md:pb-12">
-                  <div className={`absolute -top-6 sm:-top-8 md:-top-10 lg:-top-12 left-1/2 transform -translate-x-1/2 text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg whitespace-nowrap z-20 transition-opacity duration-500 ${
-                    animatedHeights.videoEditing > 0 ? 'opacity-100' : 'opacity-0'
-                  }`}>
+              <div className="flex flex-col items-center gap-3 sm:gap-4 flex-1 max-w-[70px] sm:max-w-[90px] md:max-w-[120px] lg:max-w-[150px]">
+                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[250px] sm:min-h-[280px] md:min-h-[320px]">
+                  <div className="absolute -top-10 sm:-top-12 md:-top-14 left-1/2 transform -translate-x-1/2 text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl whitespace-nowrap z-30 bg-navy-dark/80 px-2 py-1 rounded shadow-lg">
                     95%
                   </div>
                   <div 
-                    className="w-full bg-navy-light rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 hover:brightness-110 shadow-lg border-2 border-navy-light/50"
+                    className="w-full bg-navy-light rounded-t-lg hover:opacity-90 hover:brightness-110 shadow-lg border-2 border-navy-light/50"
                     style={{ 
                       height: `${animatedHeights.videoEditing}%`, 
-                      minHeight: `${(animatedHeights.videoEditing / 100) * 250}px`,
-                      transformOrigin: 'bottom',
-                      transition: 'height 1s ease-out, min-height 1s ease-out'
+                      minHeight: '200px'
                     }}
                   ></div>
                 </div>
-                <span className="text-white font-semibold text-[10px] sm:text-xs md:text-sm lg:text-base text-center leading-tight mt-2 whitespace-nowrap">Video Editing</span>
+                <span className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg text-center leading-tight mt-3 sm:mt-4 whitespace-nowrap drop-shadow-lg">Video Editing</span>
               </div>
 
               {/* Web & Mobile Development - Second */}
-              <div className="flex flex-col items-center gap-2 sm:gap-3 flex-1 max-w-[80px] sm:max-w-[100px] md:max-w-[140px] lg:max-w-[180px]">
-                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px] sm:min-h-[250px] md:min-h-[300px] pb-8 sm:pb-10 md:pb-12">
-                  <div className={`absolute -top-6 sm:-top-8 md:-top-10 lg:-top-12 left-1/2 transform -translate-x-1/2 text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg whitespace-nowrap z-20 transition-opacity duration-500 ${
-                    animatedHeights.webDev > 0 ? 'opacity-100' : 'opacity-0'
-                  }`}>
+              <div className="flex flex-col items-center gap-3 sm:gap-4 flex-1 max-w-[70px] sm:max-w-[90px] md:max-w-[120px] lg:max-w-[150px]">
+                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[250px] sm:min-h-[280px] md:min-h-[320px]">
+                  <div className="absolute -top-10 sm:-top-12 md:-top-14 left-1/2 transform -translate-x-1/2 text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl whitespace-nowrap z-30 bg-navy-dark/80 px-2 py-1 rounded shadow-lg">
                     75%
                   </div>
                   <div 
-                    className="w-full bg-navy-light rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 hover:brightness-110 shadow-lg border-2 border-navy-light/50"
+                    className="w-full bg-navy-light rounded-t-lg hover:opacity-90 hover:brightness-110 shadow-lg border-2 border-navy-light/50"
                     style={{ 
                       height: `${animatedHeights.webDev}%`, 
-                      minHeight: `${(animatedHeights.webDev / 100) * 250}px`,
-                      transformOrigin: 'bottom',
-                      transition: 'height 1s ease-out, min-height 1s ease-out'
+                      minHeight: '150px'
                     }}
                   ></div>
                 </div>
-                <span className="text-white font-semibold text-[10px] sm:text-xs md:text-sm lg:text-base text-center leading-tight mt-2">Web & Mobile Dev</span>
+                <span className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg text-center leading-tight mt-3 sm:mt-4 drop-shadow-lg">Web & Mobile Dev</span>
               </div>
 
               {/* AI Specialist - Equal */}
-              <div className="flex flex-col items-center gap-2 sm:gap-3 flex-1 max-w-[80px] sm:max-w-[100px] md:max-w-[140px] lg:max-w-[180px]">
-                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px] sm:min-h-[250px] md:min-h-[300px] pb-8 sm:pb-10 md:pb-12">
-                  <div className={`absolute -top-6 sm:-top-8 md:-top-10 lg:-top-12 left-1/2 transform -translate-x-1/2 text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg whitespace-nowrap z-20 transition-opacity duration-500 ${
-                    animatedHeights.aiSpecialist > 0 ? 'opacity-100' : 'opacity-0'
-                  }`}>
+              <div className="flex flex-col items-center gap-3 sm:gap-4 flex-1 max-w-[70px] sm:max-w-[90px] md:max-w-[120px] lg:max-w-[150px]">
+                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[250px] sm:min-h-[280px] md:min-h-[320px]">
+                  <div className="absolute -top-10 sm:-top-12 md:-top-14 left-1/2 transform -translate-x-1/2 text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl whitespace-nowrap z-30 bg-navy-dark/80 px-2 py-1 rounded shadow-lg">
                     60%
                   </div>
                   <div 
-                    className="w-full bg-navy-light rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 hover:brightness-110 shadow-lg border-2 border-navy-light/50"
+                    className="w-full bg-navy-light rounded-t-lg hover:opacity-90 hover:brightness-110 shadow-lg border-2 border-navy-light/50"
                     style={{ 
                       height: `${animatedHeights.aiSpecialist}%`, 
-                      minHeight: `${(animatedHeights.aiSpecialist / 100) * 250}px`,
-                      transformOrigin: 'bottom',
-                      transition: 'height 1s ease-out, min-height 1s ease-out'
+                      minHeight: '120px'
                     }}
                   ></div>
                 </div>
-                <span className="text-white font-semibold text-[10px] sm:text-xs md:text-sm lg:text-base text-center leading-tight mt-2">AI Specialist</span>
+                <span className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg text-center leading-tight mt-3 sm:mt-4 drop-shadow-lg">AI Specialist</span>
               </div>
 
               {/* Scriptwriting - Equal */}
-              <div className="flex flex-col items-center gap-2 sm:gap-3 flex-1 max-w-[80px] sm:max-w-[100px] md:max-w-[140px] lg:max-w-[180px]">
-                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px] sm:min-h-[250px] md:min-h-[300px] pb-8 sm:pb-10 md:pb-12">
-                  <div className={`absolute -top-6 sm:-top-8 md:-top-10 lg:-top-12 left-1/2 transform -translate-x-1/2 text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg whitespace-nowrap z-20 transition-opacity duration-500 ${
-                    animatedHeights.scriptwriting > 0 ? 'opacity-100' : 'opacity-0'
-                  }`}>
+              <div className="flex flex-col items-center gap-3 sm:gap-4 flex-1 max-w-[70px] sm:max-w-[90px] md:max-w-[120px] lg:max-w-[150px]">
+                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[250px] sm:min-h-[280px] md:min-h-[320px]">
+                  <div className="absolute -top-10 sm:-top-12 md:-top-14 left-1/2 transform -translate-x-1/2 text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl whitespace-nowrap z-30 bg-navy-dark/80 px-2 py-1 rounded shadow-lg">
                     60%
                   </div>
                   <div 
-                    className="w-full bg-navy-light rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 hover:brightness-110 shadow-lg border-2 border-navy-light/50"
+                    className="w-full bg-navy-light rounded-t-lg hover:opacity-90 hover:brightness-110 shadow-lg border-2 border-navy-light/50"
                     style={{ 
                       height: `${animatedHeights.scriptwriting}%`, 
-                      minHeight: `${(animatedHeights.scriptwriting / 100) * 250}px`,
-                      transformOrigin: 'bottom',
-                      transition: 'height 1s ease-out, min-height 1s ease-out'
+                      minHeight: '120px'
                     }}
                   ></div>
                 </div>
-                <span className="text-white font-semibold text-[10px] sm:text-xs md:text-sm lg:text-base text-center leading-tight mt-2">Scriptwriting</span>
+                <span className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg text-center leading-tight mt-3 sm:mt-4 drop-shadow-lg">Scriptwriting</span>
               </div>
 
               {/* Graphic Design - Equal */}
-              <div className="flex flex-col items-center gap-2 sm:gap-3 flex-1 max-w-[80px] sm:max-w-[100px] md:max-w-[140px] lg:max-w-[180px]">
-                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[200px] sm:min-h-[250px] md:min-h-[300px] pb-8 sm:pb-10 md:pb-12">
-                  <div className={`absolute -top-6 sm:-top-8 md:-top-10 lg:-top-12 left-1/2 transform -translate-x-1/2 text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg whitespace-nowrap z-20 transition-opacity duration-500 ${
-                    animatedHeights.graphicDesign > 0 ? 'opacity-100' : 'opacity-0'
-                  }`}>
+              <div className="flex flex-col items-center gap-3 sm:gap-4 flex-1 max-w-[70px] sm:max-w-[90px] md:max-w-[120px] lg:max-w-[150px]">
+                <div className="relative w-full flex flex-col items-center justify-end h-full min-h-[250px] sm:min-h-[280px] md:min-h-[320px]">
+                  <div className="absolute -top-10 sm:-top-12 md:-top-14 left-1/2 transform -translate-x-1/2 text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl whitespace-nowrap z-30 bg-navy-dark/80 px-2 py-1 rounded shadow-lg">
                     60%
                   </div>
                   <div 
-                    className="w-full bg-navy-light rounded-t-lg transition-all duration-1000 ease-out hover:opacity-90 hover:brightness-110 shadow-lg border-2 border-navy-light/50"
+                    className="w-full bg-navy-light rounded-t-lg hover:opacity-90 hover:brightness-110 shadow-lg border-2 border-navy-light/50"
                     style={{ 
                       height: `${animatedHeights.graphicDesign}%`, 
-                      minHeight: `${(animatedHeights.graphicDesign / 100) * 250}px`,
-                      transformOrigin: 'bottom',
-                      transition: 'height 1s ease-out, min-height 1s ease-out'
+                      minHeight: '120px'
                     }}
                   ></div>
                 </div>
-                <span className="text-white font-semibold text-[10px] sm:text-xs md:text-sm lg:text-base text-center leading-tight mt-2">Graphic Design</span>
+                <span className="text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg text-center leading-tight mt-3 sm:mt-4 drop-shadow-lg">Graphic Design</span>
               </div>
             </div>
           </div>
